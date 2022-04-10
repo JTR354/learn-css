@@ -231,7 +231,14 @@
 
       function setupButton() {
         btn.addEventListener('click', () => {
-          console.log(form.elements)
+          const index = form.elements.selected.value
+          const [wsid, wsid2] = ['wsid', 'wsid2'].map(it => {
+            return form.elements[it][index].value
+          })
+          const [gm, uid] = [1, 2].map((it) => {
+          return table.rows[+index + 1].querySelectorAll('tr > td')[it].textContent
+        })
+          alert(JSON.stringify({gm, uid, wsid, wsid2}))
         })
       }
     </script>
