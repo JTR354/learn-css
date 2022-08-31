@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont.css" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .swiper-container {
+        position: relative;
+        height: 100vw;
+        width: 100vw;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .swiper-container > nav {
+        height: 100%;
+        display: flex;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+      }
+      .swiper-item {
+        width: 100vw;
+        flex-shrink: 0;
+      }
+      .swiper-item:nth-child(1) {
+        background-color: cornflowerblue;
+      }
+      .swiper-item:nth-child(2) {
+        background-color: pink;
+      }
+      .swiper-item:nth-child(3) {
+        background-color: greenyellow;
+      }
+      .swiper-container > ul {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+      .swiper-container > ul > li {
+        width: 0.5rem;
+        height: 0.5rem;
+        background: #c3b9b9;
+        border-radius: 50%;
+        margin: 0 0.2rem;
+        list-style: none;
+      }
+      .swiper-container > ul > li.active {
+        background: #fff;
+      }
+      .handle {
+        position: absolute;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .left {
+        left: 0.5rem;
+      }
+      .right {
+        right: 0.5rem;
+      }
+      .iconfont {
+        font-size: 2rem;
+      }
+      .move-left {
+        transform: translate3d(-100%, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="swiper-container">
+        <nav>
+          <div class="swiper-item"></div>
+          <div class="swiper-item"></div>
+          <div class="swiper-item"></div>
+        </nav>
+        <ul>
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div class="handle left">
+          <span class="iconfont icon-left-circle-fill"></span>
+        </div>
+        <div class="handle right">
+          <span class="iconfont icon-roundrightfill"></span>
+        </div>
+      </section>
+    </main>
+    <script>
+      const left = document.querySelector(".left");
+      const right = document.querySelector(".right");
+      const container = document.querySelector(".swiper-container > nav");
+      const dots = document.querySelector(".swiper-container > ul");
+      let index = 0;
+      right.addEventListener("click", () => {
+        move(++index);
+      });
+      left.addEventListener("click", () => {
+        move(--index);
+      });
+      function move(index) {
+        const length = container.children.length;
+        index = index % length;
+        Array.from(dots.children).forEach((el, i) => {
+          if (i !== index) {
+            el.classList.remove("active");
+          } else {
+            el.classList.add("active");
+          }
+        });
+        container.setAttribute(
+          "style",
+          `transform:translate3d(-${index * 100}%,0,0)`
+        );
+      }
+    </script>
+  </body>
+</html>
