@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sticky-footer</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .main {
+        background-color: skyblue;
+      }
+      /* header {
+      height: 200px;
+      background-color: pink;
+    } */
+      section {
+        max-height: calc(100vh - 100px);
+
+        overflow-y: auto;
+      }
+      footer {
+        height: 100px;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <!-- <header>header</header> -->
+      <section class="content">
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+      </section>
+      <footer>
+        <button id="add">add</button> <button id="del">del</button>
+      </footer>
+    </div>
+    <script>
+      const add = document.getElementById('add')
+      const del = document.getElementById('del')
+      const section = document.querySelector('section')
+      add.addEventListener('click', () => {
+        const p = document.createElement('p')
+        p.innerText = 'content'
+        section.appendChild(p)
+      })
+      del.addEventListener('click', () => {
+        section.children[section.children.length - 1].remove()
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiper</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .main {
+        position: relative;
+        display: flex;
+        background-color: skyblue;
+        overflow: hidden;
+      }
+      .container {
+        display: flex;
+        transition: 0.5s;
+      }
+      .container > img {
+        width: 100vw;
+        flex-shrink: 0;
+      }
+      .pagetion {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1rem;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      .pagetion > li {
+        width: 1rem;
+        height: 1rem;
+        background-color: #ccc;
+        margin: 0 0.5rem;
+        border-radius: 50%;
+        list-style: none;
+        cursor: pointer;
+      }
+      .pagetion > li:hover {
+        background-color: #fff;
+      }
+      li.active {
+        background-color: #fff;
+      }
+      .left,
+      .right {
+        position: absolute;
+        top: 50%;
+        border: 1rem solid #ccc;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        cursor: pointer;
+      }
+      .left:hover,
+      .right:hover {
+        border: 1rem solid #fff;
+        border-top-color: transparent;
+        border-right-color: transparent;
+      }
+      .left {
+        left: 1rem;
+        transform: rotate(45deg);
+      }
+      .right {
+        right: 1rem;
+        transform: rotate(-135deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <img
+          src="https://i.ytimg.com/vi/I5FFSrKvlwQ/maxresdefault.jpg"
+          alt=""
+        />
+        <img
+          src="https://i.ytimg.com/vi/itCTVURAmpc/maxresdefault.jpg"
+          alt=""
+        />
+        <img
+          src="https://2img.hitv.com/preview/sp_images/2022/7/27/dianying/420004/17087126/20220727100415741.jpg"
+          alt=""
+        />
+      </div>
+      <div class="left"></div>
+      <ul class="pagetion"></ul>
+      <div class="right"></div>
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+      const fragment = document.createDocumentFragment();
+      const pagetion = document.querySelector(".pagetion");
+      new Array(container?.children?.length || 3)
+        .fill(1)
+        .forEach((_, index) => {
+          const li = document.createElement("li");
+          if (index === 0) {
+            li.classList.add("active");
+          }
+          li.addEventListener("click", () => {
+            container.style.transform = `translate(-${
+              index * window.innerWidth
+            }px)`;
+
+            Array.from(pagetion.children).forEach((it, i) => {
+              it.classList.remove("active");
+              if (i === index) {
+                it.classList.add("active");
+              }
+            });
+          });
+          fragment.appendChild(li);
+        });
+      pagetion.appendChild(fragment);
+      Array.from(document.querySelectorAll("img")).forEach((item, index) => {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          alert(index + 1);
+        });
+      });
+      Array.from(document.querySelectorAll(".main > div")).forEach(
+        (item, index) => {
+          item.addEventListener("click", (e) => {
+            // const  a =  e.target.classList
+            console.log(container.style.transform);
+            // container
+            const transform = container.style.transform || "0";
+            let index = transform.match(/(\d+)/)[0] / window.innerWidth;
+            // debugger
+            if (/left/.test(e.target.classList.value)) {
+              // index = Math.max(0, index - 1);
+              index--;
+              if (index < 0) {
+                index = container.children.length - 1;
+              }
+            } else {
+              index++;
+              if (index >= container.children.length) {
+                index = 0;
+              }
+              // index = Math.min(index + 1,container.children.length - 1 )
+            }
+            Array.from(pagetion.children).forEach((it, i) => {
+              it.classList.remove("active");
+              if (i === index) {
+                it.classList.add("active");
+              }
+            });
+            container.style.transform = `translate(-${
+              index * window.innerWidth
+            }px)`;
+          });
+        }
+      );
+    </script>
+  </body>
+</html>
