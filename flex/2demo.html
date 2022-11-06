@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        width: 500px;
+        height: 500px;
+        background-color: skyblue;
+        display: flex;
+        /* flex-direction: column-reverse; */
+        flex-wrap: wrap;
+        flex-direction: column;
+        flex-flow: row warp;
+      }
+      .main > div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        font-size: 1rem;
+        outline: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-wrap flex-flow</h1>
+    <div class="main">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+    <script>
+      const fragment = document.createDocumentFragment()
+      new Array(10).fill(0).forEach((_, index) => {
+        const div = document.createElement('div')
+        div.innerText = index + 1
+        fragment.appendChild(div)
+      })
+      document.querySelector('.main').appendChild(fragment)
+    </script>
+  </body>
+</html>

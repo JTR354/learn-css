@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        /* width: 300px; */
+        height: 200px;
+        background-color: skyblue;
+        display: flex;
+        align-items: center;
+      }
+      .main > div {
+        width: 10px;
+        height: 100px;
+        background-color: pink;
+        margin-right: 10px;
+      }
+      .main > div:nth-child(1) {
+        /* 占剩余空间的比例 */
+        flex-grow: 1;
+        word-break: break-all;
+      }
+      .main > div:nth-child(2) {
+      }
+    </style>
+  </head>
+  <body>
+    <h1>子项flow-grow</h1>
+    <div class="main">
+      <div>阿斯达阿斯达啊实打实多啊实打实大1231312312313</div>
+    </div>
+
+    <script>
+      const fragment = document.createDocumentFragment();
+      new Array(1).fill(0).forEach((_, index) => {
+        const div = document.createElement("div");
+        div.innerText = String(index + 1) + "中文".repeat(1);
+        fragment.appendChild(div);
+      });
+      document.querySelector(".main").appendChild(fragment);
+    </script>
+  </body>
+</html>

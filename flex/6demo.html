@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        /* width: 300px; */
+        height: 200px;
+        background-color: skyblue;
+        display: flex;
+        align-items: center;
+      }
+      .main > div {
+        width: 10px;
+        height: 100px;
+        background-color: pink;
+        margin-right: 10px;
+      }
+      .main > div:nth-child(1) {
+        margin-right: auto;
+      }
+      .main > div:nth-child(3) {
+        /*         margin auto 自动分组 */
+        margin-right: auto;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <h1>子项 分组</h1>
+    <div class="main"></div>
+
+    <script>
+      const fragment = document.createDocumentFragment();
+      new Array(7).fill(0).forEach((_, index) => {
+        const div = document.createElement("div");
+        div.innerText = index + 1;
+        fragment.appendChild(div);
+      });
+      document.querySelector(".main").appendChild(fragment);
+    </script>
+  </body>
+</html>
