@@ -18,10 +18,15 @@
       .container {
         display: flex;
         transition: 0.5s;
+        /*移动端 scroll-snap-type*/
+        /* scroll-snap-type: x mandatory; */
+        /* overflow: auto; */
       }
       .container > img {
         width: 100vw;
         flex-shrink: 0;
+        /* scroll-snap-align: center ; */
+        /* scroll-snap-stop: always; */
       }
       .pagetion {
         position: absolute;
