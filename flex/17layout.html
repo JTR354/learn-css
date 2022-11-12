@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .list {
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 16px;
+    }
+    .wrapper {
+      width: 80%;
+      max-width: 76em;
+      margin: 0 auto;
+      /* width: 1000px; */
+    }
+    .row {
+      display: flex;
+      margin: 0 -8px;
+    }
+    .row-quartet > * {
+      flex-basis: 25%;
+      max-width: 25%;
+    }
+    .row-trio > * {
+      flex-basis: 33.33333%;
+    }
+    .col {
+      min-height: 100px;
+      /* outline: 1px solid #000; */
+      /* flex-grow: 1; */
+      /* background-color: #eee; */
+      /* padding: 0 0.6758em; */
+      padding: 0 8px 1.375em;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction:column;
+      /* white-space:pre-wrap ; */
+    }
+    .col > * {
+      /* background-color: #eee;; */
+      flex-grow: 1;
+    }
+    .subcategory-content {
+      /* width: 80%; */
+      flex-basis: 80%;
+    }
+    .subcategory-header {
+      flex-basis: 20%;
+    }
+    .subcategory-featured {
+      flex-basis: 50%;
+    }
+    .story {
+      padding: 0.6875em;
+      background-color: #eee;
+      word-break: break-word;
+    }
+    .story img {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <header>
+      <div class="wrapper">
+        <h2>New Important</h2>
+      </div>
+    </header>
+    <nav>
+      <div class="wrapper list">
+        <div><a href="/">Home</a></div>
+        <div><a href="/">Home2</a></div>
+        <div><a href="/">Home3</a></div>
+        <div><a href="/">Home4</a></div>
+      </div>
+    </nav>
+    <main>
+      <div class="wrapper">
+        <section class="categorate">
+          <div class="row">
+            <header class="col subcategory-header">
+              <h3>Sub Title 1</h3>
+            </header>
+            <div class="col subcategory-content">
+              <div class="row row-trio">
+                <div class="col subcategory-featured">
+                  <article class="story">
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandae</p>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="story">
+                   
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandae</p>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="story">
+                    
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandaeAutem repudiandaeAutem repudiandaeAutem repudiandae</p>
+                  </article>
+                </div>
+              </div>
+              <div class="row row-quartet">
+                <div class="col">
+                  <article class="story">
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandae</p>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="story">
+                    
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandae</p>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="story">
+                    
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandaeAutem repudiandaeAutem repudiandaeAutem repudiandae</p>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="story">
+                    
+                    <h3>Cras suscipit nec leo id.</h3>
+                    <p>Autem repudiandaeAutem reandaeAutem repudianandaeAutem repudianandaeAutem repudianandaeAutem repudianandaeAutem repudianandaeAutem repudianpudiandaeAutem repudiandaeAutem repudiandae</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
